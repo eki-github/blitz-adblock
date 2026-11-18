@@ -22,7 +22,7 @@ The original Blitz executable and application archive stay intact. Opening Blitz
 
 ## Compatibility
 
-Tested with Blitz **3.0.25**.
+Tested with Blitz **3.0.24 - 3.0.26**.
 
 ## Build and test
 
