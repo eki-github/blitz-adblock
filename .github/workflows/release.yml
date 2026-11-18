@@ -1,0 +1,26 @@
+name: Blitz Adblock Patch release
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Build and test
+        shell: powershell
+        run: |
+          .\build.ps1
+          .\tests\run.ps1
+      - name: Publish Windows executable
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create $env:GITHUB_REF_NAME dist/BlitzAdblock.exe --verify-tag --title "Blitz Adblock Patch $env:GITHUB_REF_NAME" --notes "Open BlitzAdblock.exe to install the patch alongside Blitz. To remove it, use Uninstall Blitz Adblock Patch in Start."

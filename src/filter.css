@@ -1,0 +1,20 @@
+.🤑-wrapper, .🤑-column, .🤑-rectangle, .🤑-leaderboard,
+.🤑-placeholder, .🤑-sidebar, .leaderboard-promo,
+.leaderboard-container:has(> .🤑-leaderboard),
+.profile-layout .advertisement:has(.🤑-rectangle),
+.ads-rail-marker[data-ads-rail-anchor] {
+    display: none !important;
+}
+
+.content-container.width-rail:has(.ads-rail-marker) {
+    grid-template-columns: minmax(0, 1fr) !important;
+    column-gap: 0 !important;
+    --right-rail-width: 0px !important;
+    --rail-gap: 0px !important;
+}
+
+@container content-column (640px <= inline-size < 1052px) {
+    .overview:has(.advertisement .🤑-rectangle) {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+}
